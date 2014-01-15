@@ -22,7 +22,7 @@ The domain of a discrete node—represented by an instance of the class `Domain`
 
 Each variable’s conditional probability table, as well as the network’s table of decision utilities, is represented by an instance of the class `SampleSpace`. A `SampleSpace` instance holds a reference to a `NodeVector` and maps every combination of those nodes’ values—every unique `State`—to a consecutive integer index with no wasted indices. These states are not actually held as references, but are rather mapped on the fly by the recursive functions `int domainID(int i, int j)` and `int stateID(State state)` (see figure). The `SampleSpace` maintains a vector of `Distributions` when used as a conditional probability table, and maintains a vector of `BigDecimals` when used as a decision utility table.
 
-![SampleSpace diagram](https://github.com/jaschaephraim/dnet/blob/master/SampleSpace-diagram.png)
+![SampleSpace diagram](https://github.com/jaschaephraim/dnet/blob/master/SampleSpace-diagram.png?raw=true)
 
 The class `Variable` contains the methods `Distribution prior()` and `Distribution givenParents()`, on which all other probability calculations are based. The method `Distribution givenBlanket()` calculates a variable’s probability distribution given the values of the nodes in its Markov blanket, and the method `Object markovSample()` returns a random object from the variable’s domain according to that distribution.
 
